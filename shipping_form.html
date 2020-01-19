@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{%extends "base.html"%}
+{%block main%}
+<html lang="ru">
+<h1>Ваш Заказ</h1>
+{{orders}}
+{%for dish in orders.dishes.all%}
+{{dish.name}}--{{dish.price}}грн.
+{%endfor%}
+<h1>Shipping Form</h1>
+<ul>
+    <form method="POST" class="post-form">{% csrf_token %}
+    {{form.as_p}}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+
+</ul>
+</html>
+{%endblock%}
